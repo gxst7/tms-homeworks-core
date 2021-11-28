@@ -10,6 +10,26 @@ import java.util.Scanner;
  */
 public class Task1 {
 
+    private static void printLetter(String ltr) {
+        switch (ltr) {
+            case "a":
+            case "e":
+            case "u":
+            case "i":
+            case "o":
+            case "y":
+                System.out.println("Vowel");
+                break;
+            case "b":
+            case "c":
+            case "d":
+            case "f":
+                // etc
+                System.out.println("Consonant");
+                break;
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String letter;
@@ -17,9 +37,13 @@ public class Task1 {
 
         // if solution
         System.out.println("enter a letter");
-        while (!(letter = scanner.nextLine()).equals("")) {
+        for (;;) {
+            letter = scanner.nextLine();
+            if (letter.isEmpty()) {
+                break;
+            }
             if (!(Consonants.isContains(letter) || Vowels.isContains(letter))) {
-                System.out.println("It is not a letter");
+                System.out.println("It is not a letter\nenter a letter");
             } else {
                 if (Consonants.isContains(letter)) {
                     System.out.println("It is a consonant");
@@ -34,24 +58,12 @@ public class Task1 {
 
         // while solution
         System.out.println("enter a letter");
-        loop: while (!(ltr = scanner.nextLine()).equals("")) {
-            switch (ltr) {
-                case "a":
-                case "e":
-                case "u":
-                case "i":
-                case "o":
-                case "y":
-                    System.out.println("Vowel");
-                    break loop;
-                case "b":
-                case "c":
-                case "d":
-                case "f":
-                    // etc
-                    System.out.println("Consonant");
-                    break loop;
+        for (;;) {
+            ltr = scanner.nextLine();
+            if (ltr.isEmpty()) {
+                break;
             }
+            printLetter(ltr);
         }
         scanner.close();
     }
