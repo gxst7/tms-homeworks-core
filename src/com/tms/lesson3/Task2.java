@@ -13,7 +13,7 @@ public class Task2 {
         for (int i : array) {
             if (i < min) {
                 min = i;
-            } else if (i > max) {
+            } else {
                 max = i;
             }
         }
