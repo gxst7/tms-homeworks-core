@@ -1,8 +1,10 @@
 package com.tms.lesson5;
 
+import com.tms.lesson6.Searchable;
+
 import java.util.ArrayList;
 
-public class Director extends Employee {
+public class Director extends Employee implements Searchable {
 
     private ArrayList<Employee> employeesForTheDirector = new ArrayList<>();
 
@@ -43,5 +45,50 @@ public class Director extends Employee {
         return super.toString() +
         this.getFullName() + "'s workers" +
         prettyPrintEmployees();
+    }
+
+    @Override
+    public Employee getEmployeeByName(String name) {
+        if (employeesForTheDirector.isEmpty()) {
+            return null;
+        }
+
+        for (Employee e : employeesForTheDirector) {
+            if (e.getFullName().equals(name)) {
+                return e;
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Employee getEmployeeByNameDeep(String name) {
+        Employee myEmployee = null;
+        if (employeesForTheDirector.isEmpty()) {
+            return null;
+        }
+
+        for (Employee e : employeesForTheDirector) {
+            if (e.getFullName().equals(name)) {
+                myEmployee = e;
+                break;
+            }
+            if (e.getPosition().equals(Position.DIRECTOR)) {
+                myEmployee = ((Director) e).getEmployeeByName(name);
+            }
+        }
+
+        return myEmployee;
+    }
+
+    @Override
+    public void printInformationAboutEmployee(String name) {
+        System.out.println(getEmployeeByNameDeep(name));
+    }
+
+    @Override
+    public void toFireEmployee(Employee employee) {
+        employeesForTheDirector.remove(employee);
     }
 }

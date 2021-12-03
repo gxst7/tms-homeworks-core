@@ -14,5 +14,7 @@ public class Main {
         viceDirector.addWorker(new Worker("Yan", "Li", 2));
 
         System.out.println(chiefDirector);
+
+        chiefDirector.printInformationAboutEmployee(worker1.getFullName());
     }
 }

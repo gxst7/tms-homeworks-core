@@ -35,6 +35,10 @@ public abstract class Employee extends Person {
         setSalary(Finance.baseRate * wageRatio * yearsOfWorkExperience);
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public abstract void setPosition();
 
     @Override
