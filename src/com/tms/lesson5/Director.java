@@ -25,12 +25,9 @@ public class Director extends Employee {
 
     @Override
     public void calculateSalary() {
-        // у меня здесь возникает ошибка, employeesForDirector равен null
-        // почему ??
-        // я делаю условие если employeesForDirector > 3 и на этой строке
-        // NullPointerException
-        // employeesForTheDirector.size(); к примеру
-        super.calculateSalary();
+        if (employeesForTheDirector.size() > 3) {
+            super.setSalaryForEmployee(getSalary()*1.2);
+        }
     }
 
     @Override

@@ -12,7 +12,7 @@ public abstract class Employee extends Person {
         this.position = position;
         this.wageRatio = position.getWageRatio();
         this.yearsOfWorkExperience = yearsOfWorkExperience;
-        calculateSalary();
+        setSalary(Finance.baseRate * wageRatio * yearsOfWorkExperience);
     }
 
     public void setPosition(Position position) {
