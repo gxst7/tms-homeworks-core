@@ -1,5 +1,7 @@
 package com.tms.lesson5;
 
+import com.tms.lesson6.SimpleSearch;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,5 +18,7 @@ public class Main {
         System.out.println(chiefDirector);
 
         chiefDirector.printInformationAboutEmployee(worker1.getFullName());
+
+        System.out.println(chiefDirector.getEmployeeByName(worker1.getFullName(), "-d"));
     }
 }
