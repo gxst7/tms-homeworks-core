@@ -30,7 +30,9 @@ public class Director extends Employee implements Searchable {
 
     @Override
     public void calculateSalary() {
-        super.calculateSalary();
+        if (employeesForTheDirector.size() > 3) {
+            super.setSalaryForEmployee(getSalary()*1.2);
+        }
     }
 
     @Override
