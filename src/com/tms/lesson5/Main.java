@@ -1,5 +1,7 @@
 package com.tms.lesson5;
 
+import com.tms.lesson6.SimpleSearch;
+
 public class Main {
 
     public static void main(String[] args) {

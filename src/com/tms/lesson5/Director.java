@@ -1,10 +1,15 @@
 package com.tms.lesson5;
 
+import com.tms.lesson6.DeepSearch;
+import com.tms.lesson6.Searchable;
+import com.tms.lesson6.SimpleSearch;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class Director extends Employee {
+public class Director extends Employee implements Searchable {
 
-    private ArrayList<Employee> employeesForTheDirector = new ArrayList<>();
+    private List<Employee> employeesForTheDirector = new ArrayList<>();
 
     public Director(String firstName, String lastName, int yearsOfWorkExperience) {
         super(firstName, lastName, Position.DIRECTOR, yearsOfWorkExperience);
@@ -40,5 +45,28 @@ public class Director extends Employee {
         return super.toString() +
         this.getFullName() + "'s workers" +
         prettyPrintEmployees();
+    }
+
+    public Employee getEmployeeByName(String name, String flag) {
+        Employee e;
+        switch (flag) {
+            case "-s":
+                e = SimpleSearch.getEmployeeByName(employeesForTheDirector, name);
+                break;
+            case "-d":
+                e = DeepSearch.getEmployeeByName(employeesForTheDirector, name);
+                break;
+            default:
+                e = null;
+        }
+        return e;
+    }
+
+    public void printInformationAboutEmployee(String name) {
+        System.out.println(SimpleSearch.getEmployeeByName(employeesForTheDirector, name));
+    }
+
+    public void toFireEmployee(Employee employee) {
+        employeesForTheDirector.remove(employee);
     }
 }
